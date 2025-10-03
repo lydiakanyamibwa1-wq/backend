@@ -69,7 +69,6 @@ const swaggerOptions = {
       description: "API documentation for Shop project",
     },
     servers: [
-      { url: "http://localhost:7000" },
       { url: "https://shop-80ey.onrender.com" } // ✅ Add deployed base URL
     ],
     components: {
