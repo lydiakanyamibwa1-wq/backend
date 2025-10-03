@@ -25,28 +25,34 @@ const app: Application = express();
 =================================
 */
 const allowedOrigins = [
-  "http://localhost:5173",      // Local frontend
-  "http://127.0.0.1:5173",      // Local frontend alternative
-  "http://192.168.1.109:5173",  // LAN IP
-  "http://localhost:7000",      // Local Swagger
-  "https://shop-80ey.onrender.com", // ✅ Deployed Render domain
-  "https://frontend-zeta-brown-81.vercel.app" // ✅ Vercel frontend
+  "http://localhost:5173",       // Local frontend
+  "http://127.0.0.1:5173",       // Local frontend alternative
+  "http://192.168.1.109:5173",   // LAN IP
+  "http://localhost:7000",       // Local Swagger
+  "https://localhost:7000",      // Local Swagger
+  "https://shop-80ey.onrender.com", // Deployed Render domain
+  "https://frontend-zeta-brown-81.vercel.app" // Vercel frontend
 ];
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        console.error(`❌ Blocked by CORS: ${origin}`);
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
-  })
-);
+const corsOptions = {
+  origin: function (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.error(`❌ Blocked by CORS: ${origin}`);
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  // Methods to allow
+  methods: "GET,POST,PUT,DELETE,PATCH,HEAD,OPTIONS",
+  // Headers to allow
+  allowedHeaders: "Content-Type,Authorization",
+  // Allow cookies and authorization headers
+  credentials: true,
+};
 
+app.use(cors(corsOptions));
 app.use(express.json());
 
 /* 
