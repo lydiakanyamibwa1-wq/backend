@@ -31,7 +31,7 @@ const allowedOrigins = [
   "http://localhost:7000",       // Local Swagger
   "https://localhost:7000",      // Local Swagger
   "https://shop-80ey.onrender.com", // Deployed Render domain
-  "https://frontend-zeta-brown-81.vercel.app" // Vercel frontend
+  "https://frontend-iota-five-75.vercel.app" // Vercel frontend
 ];
 
 const corsOptions = {
