@@ -12,9 +12,9 @@ import swaggerJsdoc from "swagger-jsdoc";     // Swagger generator
 // Routes
 import productRoutes from "./routes/product.routes";
 import authRoutes from "./routes/auth.routes";
-import orderRoutes from "./routes/orderRoutes"; 
+import orderRoutes from "./routes/order.routes";
 import cartRoutes from "./routes/cart.routes";
-import subscribeRoutes from "./routes/subscribeRoutes";
+import subscribeRoutes from "./routes/subscribe.routes";
 import contactRoutes from "./routes/contact.routes";
 
 const app: Application = express();
@@ -29,7 +29,8 @@ const allowedOrigins = [
   "http://127.0.0.1:5173",      // Local frontend alternative
   "http://192.168.1.109:5173",  // LAN IP
   "http://localhost:7000",      // Local Swagger
-  "https://shop-80ey.onrender.com" // ✅ Deployed Render domain
+  "https://shop-80ey.onrender.com", // ✅ Deployed Render domain
+  "https://frontend-zeta-brown-81.vercel.app" // ✅ Vercel frontend
 ];
 
 app.use(

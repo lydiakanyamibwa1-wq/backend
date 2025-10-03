@@ -7,6 +7,7 @@ import {
   updateProduct,
   deleteProduct,
 } from "../controllers/product.controller";
+import Product from "../models/product.model";
 
 const router = Router();
 
